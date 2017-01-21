@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MyClient {
     final static String appId = "wx1d9db42ae638e914";
     final static String appsecret = "7f832387735fb2fc78498c01741e2741";
-    public final static String token = "20124003";
+    public final static String token = "xxxxx";
     static String access_token = null;
     static final PoolingHttpClientConnectionManager httpClientConnectionManager = new PoolingHttpClientConnectionManager();
     static final ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();

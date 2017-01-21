@@ -68,6 +68,6 @@ public class MyController {
     }
 
     public static void main(String[] args) {
-        System.out.println(new MyController().reply("sy1606604,20124003", "weidiao"));
+        System.out.println(new MyController().reply("sy1606604,xxxx", "weidiao"));
     }
 }

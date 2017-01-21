@@ -133,7 +133,7 @@ public class SyllabusGetter {
     }
 
     public static void main(String[] args) throws IOException {
-        String s = JSON.toJSONString(SyllabusGetter.get("SY1606604", "20124003", HttpClients.createDefault()));
+        String s = JSON.toJSONString(SyllabusGetter.get("SY1606604", "xxxx", HttpClients.createDefault()));
         System.out.println(s);
     }
 }
