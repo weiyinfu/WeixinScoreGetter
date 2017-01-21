@@ -22,7 +22,11 @@ public class MyClient {
     public final static String token = "xxxxx";
     static String access_token = null;
     static final PoolingHttpClientConnectionManager httpClientConnectionManager = new PoolingHttpClientConnectionManager();
-    static final ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();
+    static ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();
+
+    static {
+        UserData.load();
+    }
 
     static HttpClient getClient() {
         return HttpClients.custom().setConnectionManager(httpClientConnectionManager).build();
@@ -73,6 +77,7 @@ public class MyClient {
     public static String getResult(String openid) {
         User user = users.get(openid);
         if (System.currentTimeMillis() - user.getLastUpdateTime() > 3600 * 1000 * 1 || user.getResult() == null) {
+            user.setLastUpdateTime(System.currentTimeMillis());
             user.setResult(ScoreGetter.get(user.getUsername(), user.getPassword(), getClient()));
         }
         return user.getResult();

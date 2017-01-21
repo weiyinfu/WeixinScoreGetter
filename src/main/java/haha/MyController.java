@@ -55,6 +55,7 @@ public class MyController {
             u.setPassword(password);
             if (MyClient.valid(username, password)) {
                 MyClient.users.put(openid, u);
+                UserData.save();
                 return MyClient.getResult(openid);
             } else {
                 return "您的用户名或者密码有误，请重新输入。输入格式为：“sy1606604,12345”";

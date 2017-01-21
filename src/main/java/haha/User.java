@@ -1,6 +1,8 @@
 package haha;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     String openid;
     String username;
     String password;
