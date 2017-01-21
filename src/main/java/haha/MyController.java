@@ -1,5 +1,6 @@
 package haha;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
@@ -43,6 +44,16 @@ public class MyController {
                 return "text";
         }
         return "";
+    }
+
+    @RequestMapping("/wyf")
+    @ResponseBody
+    String manager(String password) {
+        if (password.equals("wyf")) {
+            return JSON.toJSONString(MyClient.users, true) + "===========\n" + MyClient.users.size();
+        } else {
+            return "do you have the password?";
+        }
     }
 
     String reply(String q, String openid) {
