@@ -19,10 +19,8 @@ public class MyController {
     @ResponseBody
     @RequestMapping(value = "check", method = RequestMethod.GET)
     String get(String signature, String timestamp, String nonce, String echostr) throws Exception {
-        String s = Arrays.asList(timestamp, nonce, MyClient.token).stream().sorted().collect(Collectors.joining());
-        MessageDigest digest = MessageDigest.getInstance("SHA1");
-        String ans = new String(digest.digest(s.getBytes("utf8")), "utf8");
-        return signature.equals(ans) ? echostr : null;
+        return signature.equals(
+                Util.toHexString(MessageDigest.getInstance("SHA1").digest(Arrays.asList(timestamp, nonce, Config.token).stream().sorted().collect(Collectors.joining()).getBytes("utf8")))) ? echostr : null;
     }
 
     @RequestMapping(value = "check", method = RequestMethod.POST)
@@ -46,11 +44,11 @@ public class MyController {
         return "";
     }
 
-    @RequestMapping("/wyf")
+    @RequestMapping(value = "/wyf", produces = "text/json")
     @ResponseBody
     String manager(String password) {
         if (password.equals("wyf")) {
-            return JSON.toJSONString(MyClient.users, true) + "===========\n" + MyClient.users.size();
+            return JSON.toJSONString(ScoreQuery.users, true) + "===========\n" + ScoreQuery.users.size();
         } else {
             return "do you have the password?";
         }
@@ -64,22 +62,22 @@ public class MyController {
             u.setUsername(username);
             u.setOpenid(openid);
             u.setPassword(password);
-            if (MyClient.valid(username, password)) {
-                MyClient.users.put(openid, u);
+            if (ScoreQuery.valid(username, password)) {
+                ScoreQuery.users.put(openid, u);
                 UserData.save();
-                return MyClient.getResult(openid);
+                return ScoreQuery.getScore(openid, true);
             } else {
                 return "您的用户名或者密码有误，请重新输入。输入格式为：“sy1606604,12345”";
             }
         } else {
-            if (MyClient.users.get(openid) == null)
+            if (ScoreQuery.users.get(openid) == null)
                 return "您还没有绑定学号密码，请输入类似“sy1606604,xxxxxx”格式的教务处学号密码进行绑定";
             else
-                return MyClient.getResult(openid);
+                return ScoreQuery.getScore(openid, false);
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(new MyController().reply("sy1606604,xxxx", "weidiao"));
+        System.out.println(new MyController().reply("sy1606604,20124003", "weidiao"));
     }
 }

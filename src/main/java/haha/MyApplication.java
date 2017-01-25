@@ -13,6 +13,7 @@ public class MyApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
+
         SpringApplication.run(MyApplication.class, args);
     }
 }
