@@ -1,7 +1,7 @@
 ##目录结构说明
 java目录下
 * agnomen验证码破解
-* haha web服务模块
+* web web服务模块
 * spider 爬虫模块
 
 resouces目录下

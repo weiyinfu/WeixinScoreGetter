@@ -83,7 +83,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>haha.MyApplication</mainClass>
+                    <mainClass>web.MyApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

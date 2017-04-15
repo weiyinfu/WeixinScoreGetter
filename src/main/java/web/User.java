@@ -1,4 +1,4 @@
-package haha;
+package web;
 
 import java.io.Serializable;
 
@@ -9,7 +9,16 @@ public class User implements Serializable {
     String result;
 
 
-    long lastUpdateTime;
+    long lastUpdateTime;//上次更新数据时间
+    long lastAccessTime;//上次访问时间
+
+    public long getLastAccessTime() {
+        return lastAccessTime;
+    }
+
+    public void setLastAccessTime(long lastAccessTime) {
+        this.lastAccessTime = lastAccessTime;
+    }
 
     public long getLastUpdateTime() {
         return lastUpdateTime;

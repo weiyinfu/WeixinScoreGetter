@@ -1,4 +1,4 @@
-package haha;
+package web;
 
 import java.io.InputStream;
 import java.util.Scanner;

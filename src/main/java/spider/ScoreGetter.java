@@ -61,6 +61,6 @@ public class ScoreGetter {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(ScoreGetter.get("SY1606604", "xxxx", HttpClients.createDefault()));
+        System.out.println(ScoreGetter.get("xxxx", "xxxx", HttpClients.createDefault()));
     }
 }
