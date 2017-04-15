@@ -9,3 +9,6 @@ java目录下
 * checkcodes目录存放验证码，使用agnomen.ImageDownloader类进行生成
 * static存放静态资源
 * templates存放模板，使用freemarker模板引擎
+
+## Java中的序列化
+最好是用字符串形式，不要用ObjectStream，因为那样会导致莫名其妙的错误。
