@@ -3,3 +3,4 @@
 /.mvn
 /logs
 *.iml
+LOG_PATH_*
