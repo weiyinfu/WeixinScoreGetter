@@ -43,9 +43,7 @@ String post(HttpServletRequest req, ModelMap model) throws Exception {
    Document doc = new SAXReader().read(req.getReader());
    String FromUserName = doc.selectSingleNode("//FromUserName").getText();
    String ToUserName = doc.selectSingleNode("//ToUserName").getText();
-   String CreateTime = doc.selectSingleNode("//CreateTime").getText();
    String MsgType = doc.selectSingleNode("//MsgType").getText();
-   String MsgId = doc.selectSingleNode("//MsgId").getText();
    model.addAttribute("ToUserName", FromUserName);
    model.addAttribute("FromUserName", ToUserName);
    model.addAttribute("CreateTime", System.currentTimeMillis());
@@ -55,6 +53,11 @@ String post(HttpServletRequest req, ModelMap model) throws Exception {
          String Content = doc.selectSingleNode("//Content").getText();
          model.addAttribute("Content", reply(Content, FromUserName));
          return "text";
+      case "event": {
+         model.addAttribute("MsgType", "text");
+         model.addAttribute("Content", "欢迎使用北航查成绩，绑定学号密码就可以查成绩了！格式为‘sy1606604,123456’。\n本公众号目的在于服务大众，不会窃取用户信息。");
+         return "text";
+      }
       default:
          model.addAttribute("MsgType", "text");
          String content = "我只懂文字，不懂别的";
