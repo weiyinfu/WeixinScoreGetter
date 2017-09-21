@@ -60,6 +60,6 @@ public static String get(String username, String password, HttpClient client) th
 }
 
 public static void main(String[] args) throws IOException {
-   System.out.println(ScoreGetter.get("xxxx", "xxxx", HttpClients.createDefault()));
+   System.out.println(ScoreGetter.get("SY1606604", "20124003", HttpClients.createDefault()));
 }
 }
